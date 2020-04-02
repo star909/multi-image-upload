@@ -1,0 +1,17 @@
+<div class="container">
+    <form [formGroup]="uploadedImageData" (ngSubmit)="imageSubmit()">
+        <div class="form-group">
+            <label for="">Image Upload</label>
+            <input formControlName="file" id="file" type="file" class="form-control" (change)="onFileChange($event)" multiple required>
+            <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                <div *ngIf="f.file.errors.required">File is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
